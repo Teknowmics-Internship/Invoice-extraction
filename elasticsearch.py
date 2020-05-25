@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue May 19 20:25:05 2020
-
-@author: Gokul P
-"""
 import requests 
 from elasticsearch import Elasticsearch,helpers 
 import os, uuid
