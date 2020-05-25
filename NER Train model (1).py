@@ -19,8 +19,10 @@ import matplotlib.pyplot as plt
 # importing pandas module 
 import pandas as pd 
 import csv
+path= os.path.abspath("./him.csv")
+path2=os.path.abspath("./")
 # making data frame from csv file 
-data = pd.read_csv("/home/lenovo/Documents/him.csv", sep='/t', encoding = 'unicode_escape') 
+data = pd.read_csv(path, sep='/t', encoding = 'unicode_escape') 
   
 # dropping passed columns 
 # data.drop(["Unnamed: 2"], axis = 1, inplace = True) 
@@ -152,7 +154,7 @@ with open ('out.json', 'rb') as fp:
 #     output_dir=("Optional output directory", "option", "o", Path),
 #     n_iter=("Number of training iterations", "option", "n", int))
 
-def main(model=None, new_model_name='new_model', output_dir='/home/lenovo/Documents/teknowmics/', n_iter=10):
+def main(model=None, new_model_name='new_model', output_dir= path2 , n_iter=10):
     """Setting up the pipeline and entity recognizer, and training the new entity."""
     if model is not None:
         nlp = spacy.load(model)  # load existing spacy model
@@ -190,7 +192,8 @@ def main(model=None, new_model_name='new_model', output_dir='/home/lenovo/Docume
                            losses=losses)
             print('Losses', losses)
         # save model to output directory
-    output_dir1="/home/lenovo/Documents/him11"
+    new= os.path.abspath("./him.11")    
+    output_dir1 = new
     if output_dir1 is not None:
         output_dir1 = Path(output_dir1)
         if not output_dir1.exists():
