@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Apr  8 19:40:22 2020
 
-@author: Gokul P
-"""
 from __future__ import unicode_literals, print_function
 import spacy
 import pandas as pd
