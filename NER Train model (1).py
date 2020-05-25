@@ -1,28 +1,24 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
-##### import glob
-a=glob.glob('/home/lenovo/Documents/ner advanved/*.tsv')
-a
-
-
-# In[4]:
-
-
+from __future__ import unicode_literals, print_function
+import pickle
+import plac
+import random
+from pathlib import Path
+import spacy
+from spacy.util import minibatch, compounding
+import os
+from os import listdir
+import plac
+import logging
+import argparse
+import sys
+import json
+import pickle
 from PIL import Image      
 import os.path, sys
 import matplotlib.pyplot as plt
-
-
-# In[1]:
-
-
 # importing pandas module 
 import pandas as pd 
-  
+import csv
 # making data frame from csv file 
 data = pd.read_csv("/home/lenovo/Documents/him.csv", sep='/t', encoding = 'unicode_escape') 
   
@@ -31,21 +27,9 @@ data = pd.read_csv("/home/lenovo/Documents/him.csv", sep='/t', encoding = 'unico
   
 # display 
 data 
-
-
-# In[2]:
-
-
 #save as csv 
 data.to_csv(r'docs(1).csv', index = False)
-
-
-# In[23]:
-
-
 #csv to tsv
-import csv
-
 with open('docs(1).csv','r') as csvin, open('ner_dataset1.txt', 'w') as tsvout:
     
     csvin = csv.reader(csvin)
@@ -53,11 +37,6 @@ with open('docs(1).csv','r') as csvin, open('ner_dataset1.txt', 'w') as tsvout:
 
     for row in csvin:
           tsvout.writerow(row)
-
-
-# In[1]:
-
-
 # Convert .tsv file to dataturks json format.
 import json
 import logging
@@ -126,21 +105,7 @@ def tsv_to_json_format(input_path,output_path,unknown_label):
         logging.exception("Unable to process file" + "\n" + "error = " + str(e))
         return None
 tsv_to_json_format(r"ner_dataset1(3)(1).txt",r'ner_dataset11.json','abc')
-
-
-# In[2]:
-
-
-
 #spacy format
-import plac
-import logging
-import argparse
-import sys
-import os
-import json
-import pickle
-
 # @plac.annotations(input_file=("/content/demo.json", "option", "i", str), output_file=("/content/out.json", "option", "o", str))
 def main(input_file='ner_dataset11.json', output_file='out.json'):
     try:
@@ -174,23 +139,6 @@ def main(input_file='ner_dataset11.json', output_file='out.json'):
         logging.exception("Unable to process " + input_file + "\n" + "error = " + str(e))
         return None
 main()
-
-
-# In[3]:
-
-
-from __future__ import unicode_literals, print_function
-import pickle
-import plac
-import random
-from pathlib import Path
-import spacy
-from spacy.util import minibatch, compounding
-import os
-from os import listdir
-
-
-
 # New entity labels
 # Specify the new entity labels which you want to add here
 LABEL = [u'invoiceno', u'invoicedate', u'customer', u'vendor', u'product', u'address', u'amount']
@@ -251,10 +199,3 @@ def main(model=None, new_model_name='new_model', output_dir='/home/lenovo/Docume
         print("Saved model to", output_dir1)
         
 main()
-
-
-# In[ ]:
-
-
-
-
